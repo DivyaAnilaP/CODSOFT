@@ -1,0 +1,92 @@
+#TASK-2:CALCULATOR
+#PROGRAM:
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y != 0:
+        return x / y
+    else:
+        print("Error: Division by zero is not allowed.")
+        return None
+
+# Input the first number
+num1 = float(input("Enter the first number: "))
+
+# Input the second number
+num2 = float(input("Enter the second number: "))
+
+# Input the operation choice
+operation = input("Choose an operation (+, -, *, /): ")
+
+# Perform the calculation based on the operation choice
+if operation == '+':
+    result = add(num1, num2)
+elif operation == '-':
+    result = subtract(num1, num2)
+elif operation == '*':
+    result = multiply(num1, num2)
+elif operation == '/':
+    result = divide(num1, num2)
+else:
+    print("Error: Invalid operation.")
+    result = None
+
+# Display the result
+if result is not None:
+    print(f"Result: {num1} {operation} {num2} = {result}")
+
+
+#TASK3:PASSWORD GENERATOR
+#PROGRAM:
+
+import random
+import string
+
+def generate_password(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+# User input: Prompt the user to specify the desired length of the password
+password_length = int(input("Enter the desired length of the password: "))
+
+# Generate password
+password = generate_password(password_length)
+
+# Display the password
+print("Generated Password:", password)
+
+#TASK4:ROCK-PAPER-SCISSORS
+#PROGRAM:
+import random
+
+def play_rock_paper_scissors(user_choice):
+    choices = ['rock', 'paper', 'scissors']
+    computer_choice = random.choice(choices)
+
+    print(f"Computer chose: {computer_choice}")
+
+    if user_choice == computer_choice:
+        return "It's a tie!"
+    elif (
+        (user_choice == 'rock' and computer_choice == 'scissors') or
+        (user_choice == 'paper' and computer_choice == 'rock') or
+        (user_choice == 'scissors' and computer_choice == 'paper')
+    ):
+        return "You win!"
+    else:
+        return "You lose!"
+
+# User input: Prompt the user to choose rock, paper, or scissors
+user_choice = input("Choose rock, paper, or scissors: ").lower()
+
+# Play the game and display the result
+result = play_rock_paper_scissors(user_choice)
+print(result)
